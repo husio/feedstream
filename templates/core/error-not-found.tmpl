@@ -1,0 +1,12 @@
+	{{- template "default-header.tmpl" . -}}
+	<title>Not Found</title>
+	{{- template "extra-header.tmpl" . -}}
+</head>
+<body>
+	<h1>Paget That You Search For Not Found.</h1>
+
+	{{- if .}}<p>{{.}}</p>{{end -}}
+
+	<p>Start fresh, go to <a href="/">main page</a> instead.</p>
+</body>
+</html>

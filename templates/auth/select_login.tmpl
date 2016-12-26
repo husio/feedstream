@@ -1,0 +1,21 @@
+	{{- template "default-header.tmpl" .}}
+	{{- template "extra-header.tmpl" . -}}
+	<title> Login</title>
+</head>
+<body>
+	<h2>Login</h2>
+
+	{{if .CurrentUser}}
+		<p>You are logged as <a href="{{.CurrentUser.ProfileURL}}">{{.CurrentUser.Name}}</a>.
+	{{end}}
+
+	<p>Login using one of available providers</p>
+	{{with $root := .}}
+	<ul>
+		{{range $root.Providers}}
+			<li><a href="/login/{{.Codename}}{{if $root.Next}}?next={{$root.Next}}{{end}}">{{.Name}}</a></li>
+		{{end}}
+	</ul>
+	{{end}}
+</body>
+</html>

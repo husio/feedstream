@@ -1,0 +1,41 @@
+	{{- template "default-header.tmpl" .}}
+	{{- template "extra-header.tmpl" . -}}
+</head>
+<body>
+	<a href="/">listing</a>
+
+	<form class="subscribe" method="POST" action="/subscriptions">
+		<h2>Add new subscription</h2>
+		<input type="url" name="url" placeholder="Feed URL, for example " required>
+		<button type="submit">Subscribe</button>
+	</form>
+
+	{{if .BookmarkletHref}}
+		<a class="bookmarklet" title="Bookmark page" {{.BookmarkletHref}}>Bookmark</a>
+	{{end}}
+
+	{{range .Subscriptions}}
+		<div class="entry">
+			<div class="favicon">
+				<a href="/?feed={{.FeedID}}"><img src="{{.FeedFaviconURL}}"></a>
+			</div>
+			<div class="main">
+				<div class="title">
+					<a href="{{.URL}}">{{.Title}}</a>
+				</div>
+				<div class="meta">
+					<span title="{{.Updated}}">updated {{.Updated|timesince}}</span>
+					<span class="sep"></span>
+
+					{{if ne .FeedOwnedBy .AccountID}}
+						<form action="/subscriptions/{{.SubscriptionID}}/remove" method="POST" class="inline">
+							<!-- csrf -->
+							<button class="btn-link">delete</button>
+						</form>
+					{{end}}
+				</div>
+			</div>
+		</div>
+	{{end}}
+</body>
+</html>

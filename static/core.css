@@ -1,0 +1,32 @@
+html                            { padding: 20px 5px; background: #fff; }
+body                            { font-size: 16px; font-family: "helvetica neue",arial,sans-serif; max-width: 800px; margin: auto; color: #333; }
+
+
+a, a:visited, .btn-link         { color: #0057E7; text-decoration: none; }
+a:hover, .btn-link:hover        { color: #D62D20 !important; }
+.sep                            { display: inline-block; width: 0.8em; }
+.btn-link                       { border: 0; background: none; }
+
+
+.entry *                        { box-sizing: border-box; }
+.entry                          { margin: 15px 0; position: relative; }
+.entry .favicon                 { position: absolute; top: calc(50% - 8px); left: 0; }
+.entry .favicon img             { width: 16px; height: 16px; }
+.entry .main                    { margin-left: 24px; }
+.entry .main .meta,
+.entry .main .meta a,
+.entry .main .meta .btn-link    { color: #929292; font-size: 10px; }
+.entry .main .title a           { color: #212121; cursor: pointer; text-decoration: none; }
+.entry .main .title             { display: inline-block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.entry .main .title a:visited   { color: #8E8E8E; }
+
+form.subscribe                       { margin: 20px 0; }
+form.subscribe input                 { width: 80%; }
+form.subscribe input,
+form.subscribe button                { padding: 3px 5px; font-size: 15px; }
+
+form.inline                          { display: inline; font-size: inherit; }
+
+
+.bookmarklet                    { border-radius: 3px; border: 1px solid #C7C7C7; text-decoration: none; color: #232323; background: #E2E2E2; padding: 4px 9px; box-shadow: inset 0px 0px 0px 1px #F7F7F7; text-shadow: #fff 0 1px 2px; }
+.bookmarklet:hover              { color: #000 !important; }

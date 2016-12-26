@@ -1,0 +1,35 @@
+	{{- template "default-header.tmpl" .}}
+	{{- template "extra-header.tmpl" . -}}
+</head>
+<body>
+	<p>
+		<a href="/subscriptions">subscriptions</a>
+	</p>
+
+	{{if .Feed}}
+		<div>
+			Displaying entries from <em>{{.Feed.Title}}</em>. Display <a href="/">all entries</a>.
+		</div>
+	{{end}}
+
+	{{range .Entries -}}
+		<div class="entry">
+			<div class="favicon">
+				<a href="/?feed={{.FeedID}}" title="{{.FeedTitle}}"><img src="{{.FeedFaviconURL}}"></a>
+			</div>
+			<div class="main">
+				<div class="title">
+					<a href="{{.URL}}">{{.Title}}</a>
+				</div>
+				<div class="meta">
+					<span title="{{.Published}}">published {{.Published.Format "Jan 02"}}</span>
+					<span class="sep"></span>
+					<span><a href="//{{.URLHost}}">{{.URLHost}}</a></span>
+					<span class="sep"></span>
+					<span>{{if .ReadingTime}}{{.ReadingTime}} reading{{else}}unknown reading time{{end}}</span>
+				</div>
+			</div>
+		</div>
+	{{end}}
+</body>
+</html>

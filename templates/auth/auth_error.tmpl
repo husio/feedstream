@@ -1,0 +1,10 @@
+	{{- template "default-header.tmpl" .}}
+	{{- template "extra-header.tmpl" . -}}
+	<title>Authentication error</title>
+</head>
+<body>
+	<h2>Cannot authenticate</h2>
+	{{if .}}<p>{{.Message}}</p>{{end}}
+	<a href="/login">Try again</a>.
+</body>
+</html>
