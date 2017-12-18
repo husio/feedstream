@@ -18,7 +18,7 @@ import (
 
 func main() {
 	conf := struct {
-		HTTPAddress        string `envconf:"HTTP_ADDRESS"`
+		HTTPPort           string `envconf:"PORT"`
 		Site               string
 		Postgres           string `envconf:"DATABASE_URL"`
 		Redis              string
@@ -35,7 +35,7 @@ func main() {
 		GoogleOAuth2ClientID     string `envconf:"GOOGLE_OAUTH2_CLIENT_ID"`
 		GoogleOAuth2ClientSecret string `envconf:"GOOGLE_OAUTH2_CLIENT_SECRET"`
 	}{
-		HTTPAddress:   "localhost:8080",
+		HTTPPort:      "8080",
 		Postgres:      "dbname=postgres user=postgres sslmode=disable",
 		Redis:         "redis://localhost:6379/0",
 		StaticsDir:    "./static",
@@ -103,7 +103,7 @@ func main() {
 	// XXX
 	rt.Add(`/_/updateoutdated`, "POST", stream.UpdateOutdatedHandler(streamManager))
 
-	if err := http.ListenAndServe(conf.HTTPAddress, rt); err != nil {
+	if err := http.ListenAndServe("localhost:"+conf.HTTPPort, rt); err != nil {
 		log.Fatalf("server error: %s", err)
 	}
 }
